@@ -49,7 +49,10 @@ node {
         echo 'I am deploying'
     }
 
-    // Check the result of the pipeline
+    if (currentBuild.result == null) {
+        currentBuild.result = 'SUCCESS'
+    }
+
     if (currentBuild.result == 'SUCCESS') {
         echo 'Pipeline completed successfully!'
     } else {
